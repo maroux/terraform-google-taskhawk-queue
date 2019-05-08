@@ -1,19 +1,29 @@
-output "queue_arn" {
-  value       = "${aws_sqs_queue.sqs_queue.arn}"
-  description = "ARN of the SQS queue"
+output "topic_name" {
+  value       = "${google_pubsub_topic.topic.name}"
+  description = "Consumer topic name"
 }
 
-output "queue_name" {
-  value       = "${aws_sqs_queue.sqs_queue.name}"
-  description = "Name of the SQS queue"
+output "subscription_name" {
+  value       = "${google_pubsub_subscription.subscription.name}"
+  description = "Consumer subscription name"
 }
 
-output "dlq_arn" {
-  value       = "${aws_sqs_queue.dlq.arn}"
-  description = "ARN of the DLQ"
+output "subscription_path" {
+  value       = "${google_pubsub_subscription.subscription.path}"
+  description = "Consumer subscription path"
 }
 
-output "dlq_name" {
-  value       = "${aws_sqs_queue.dlq.name}"
-  description = "Name of the DLQ"
+output "dlq_topic_name" {
+  value       = "${google_pubsub_topic.dlq_topic.name}"
+  description = "DLQ consumer topic name"
+}
+
+output "dlq_subscription_name" {
+  value       = "${google_pubsub_subscription.dlq_subscription.name}"
+  description = "DLQ consumer subscription name"
+}
+
+output "dlq_subscription_path" {
+  value       = "${google_pubsub_subscription.dlq_subscription.path}"
+  description = "DLQ consumer subscription path"
 }
