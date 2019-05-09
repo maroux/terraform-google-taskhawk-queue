@@ -14,6 +14,7 @@ creates infra for Hedwig consumer app.
 module "consumer-dev-myapp" {
   source   = "standard-ai/hedwig-queue/google"
   queue    = "dev-myapp"
+  alerting = true
 
   labels = {
     app     = "myapp"
