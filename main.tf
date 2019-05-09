@@ -42,7 +42,7 @@ resource "google_monitoring_alert_policy" "high_message_alert" {
       comparison      = "COMPARISON_GT"
       duration        = "300s"                                            // Seconds
 
-      filter = "metric.type=\"pubsub.googleapis.com/subscription/num_undelivered_messages\" resource.type=\"pubsub_subscription\" resource.label.\"subscription_id\"=\"${google_pubsub_subscription.subscription.id}\""
+      filter = "metric.type=\"pubsub.googleapis.com/subscription/num_undelivered_messages\" resource.type=\"pubsub_subscription\" resource.label.\"subscription_id\"=\"${google_pubsub_subscription.subscription.name}\""
 
       aggregations {
         alignment_period   = "60s"
@@ -72,7 +72,7 @@ resource "google_monitoring_alert_policy" "dlq_alert" {
       comparison      = "COMPARISON_GT"
       duration        = "60s"           // Seconds
 
-      filter = "metric.type=\"pubsub.googleapis.com/subscription/num_undelivered_messages\" resource.type=\"pubsub_subscription\" resource.label.\"subscription_id\"=\"${google_pubsub_subscription.dlq_subscription.id}\""
+      filter = "metric.type=\"pubsub.googleapis.com/subscription/num_undelivered_messages\" resource.type=\"pubsub_subscription\" resource.label.\"subscription_id\"=\"${google_pubsub_subscription.dlq_subscription.name}\""
 
       aggregations {
         alignment_period   = "60s"
