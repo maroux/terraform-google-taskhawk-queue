@@ -1,11 +1,11 @@
 resource "google_pubsub_topic" "topic" {
-  name = "hedwig-${var.queue}"
+  name = "taskhawk-${var.queue}"
 
   labels = "${var.labels}"
 }
 
 resource "google_pubsub_subscription" "subscription" {
-  name  = "hedwig-${var.queue}"
+  name  = "taskhawk-${var.queue}"
   topic = "${google_pubsub_topic.topic.name}"
 
   ack_deadline_seconds = 20
@@ -14,13 +14,13 @@ resource "google_pubsub_subscription" "subscription" {
 }
 
 resource "google_pubsub_topic" "dlq_topic" {
-  name = "hedwig-${var.queue}-dlq"
+  name = "taskhawk-${var.queue}-dlq"
 
   labels = "${var.labels}"
 }
 
 resource "google_pubsub_subscription" "dlq_subscription" {
-  name  = "hedwig-${var.queue}-dlq"
+  name  = "taskhawk-${var.queue}-dlq"
   topic = "${google_pubsub_topic.dlq_topic.name}"
 
   ack_deadline_seconds = 20
@@ -31,11 +31,11 @@ resource "google_pubsub_subscription" "dlq_subscription" {
 resource "google_monitoring_alert_policy" "high_message_alert" {
   count = "${var.alerting == "true" ? 1 : 0}"
 
-  display_name = "${title(var.queue)} Hedwig queue message count too high"
+  display_name = "${title(var.queue)} Taskhawk queue message count too high"
   combiner     = "OR"
 
   conditions {
-    display_name = "${title(var.queue)} Hedwig queue message count too high"
+    display_name = "${title(var.queue)} Taskhawk queue message count too high"
 
     condition_threshold {
       threshold_value = "${var.queue_alarm_high_message_count_threshold}" // Number of messages
@@ -61,11 +61,11 @@ resource "google_monitoring_alert_policy" "high_message_alert" {
 resource "google_monitoring_alert_policy" "dlq_alert" {
   count = "${var.alerting == "true" ? 1 : 0}"
 
-  display_name = "${title(var.queue)} Hedwig DLQ is non-empty"
+  display_name = "${title(var.queue)} Taskhawk DLQ is non-empty"
   combiner     = "OR"
 
   conditions {
-    display_name = "${title(var.queue)} Hedwig DLQ is non-empty"
+    display_name = "${title(var.queue)} Taskhawk DLQ is non-empty"
 
     condition_threshold {
       threshold_value = "1"             // Number of messages
