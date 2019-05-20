@@ -40,8 +40,8 @@ overriding this behavior.
  
 ## Release Notes 
  
-[Github Releases](https://github.com/standard-ai/terraform-aws-taskhawk-queue/releases) 
+[Github Releases](https://github.com/standard-ai/terraform-google-taskhawk-queue/releases) 
  
 ## How to publish 
  
-Go to [Terraform Registry](https://registry.terraform.io/modules/standard-ai/taskhawk-queue/aws), and Resync module. 
+Go to [Terraform Registry](https://registry.terraform.io/modules/standard-ai/taskhawk-queue/google), and Resync module. 
