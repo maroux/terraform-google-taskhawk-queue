@@ -1,11 +1,11 @@
-Taskhawk SQS App Terraform module 
-================================= 
+Taskhawk Queue App Terraform module 
+=================================== 
  
-[Taskhawk](https://github.com/standard-ai/taskhawk) is a replacement for celery that works on AWS SQS/SNS, while 
-keeping things pretty simple and straight forward.  
+[Taskhawk](https://github.com/standard-ai/taskhawk) is a replacement for celery that works on AWS SQS/SNS and 
+Google Pub/Sub, while keeping things pretty simple and straight forward.  
  
 This module provides a custom [Terraform](https://www.terraform.io/) module for deploying Taskhawk  
-infrastructure for Taskhawk SQS app. 
+infrastructure for Taskhawk Queue based app. 
  
 Usage 
 ----- 
